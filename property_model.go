@@ -4,16 +4,6 @@ import (
 	c "github.com/agustin-sarasua/rs-common"
 )
 
-type Publication struct {
-	ID              int64
-	Operation       string //Sale, Rent
-	Property        *Property
-	Price           int64
-	Timestamp       string
-	Owner           *User
-	MinContractTime int64
-}
-
 type Property struct {
 	ID                 int64
 	Description        string

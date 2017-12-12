@@ -1,7 +1,7 @@
 package m
 
 type User struct {
-	ID             int64
+	UID            string
 	Name           string
 	LastName       string
 	Email          string
