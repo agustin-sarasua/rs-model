@@ -5,13 +5,13 @@ import (
 )
 
 type Property struct {
-	ID                 uint `gorm:"AUTO_INCREMENT"`
+	ID                 uint64 `gorm:"primary_key;AUTO_INCREMENT"`
 	Description        string
 	Type               string `gorm:"not null"` //Apartamento, Casa, LocalComercial
 	Orientation        string
-	State              int      // Del 0 al 10, 10 seria a estrenar
-	Bedrooms           int      `gorm:"not null"`
-	BedroomsSizes      []string `gorm:"type:varchar(64)"`
+	State              int // Del 0 al 10, 10 seria a estrenar
+	Bedrooms           int `gorm:"not null"`
+	BedroomsSizes      string
 	KitchenSize        string
 	LivingRoomSize     string
 	CourtyardSize      int
@@ -20,15 +20,15 @@ type Property struct {
 	ConstructionYear   int
 	Padron             string
 	BuildingName       string
-	Address            *Address
-	AddressID          uint `gorm:"ForeignKey:id"`
+	Address            *Address `gorm:"ForeignKey:AddressID;AssociationForeignKey:ID"`
+	AddressID          uint
 	ApartmentsPerFloor int
 	Floors             int
 	TerraceSize        string
 	BalconySize        string
 	Showers            int
-	Expenses           int64
-	Amenities          []string `gorm:"type:varchar(64)"`
+	Expenses           int32
+	Amenities          string `gorm:"type:varchar(64)"`
 	CreatedAt          time.Time
 	PropertyState      *PropertyState `gorm:"-"`
 	Elevators          int
@@ -36,7 +36,7 @@ type Property struct {
 }
 
 type PropertyState struct {
-	PropertyID       uint
+	PropertyID       uint64
 	Overall          int
 	Safety           int
 	Windows          int
@@ -49,7 +49,7 @@ type PropertyState struct {
 }
 
 type Address struct {
-	ID              uint   `gorm:"AUTO_INCREMENT"`
+	ID              uint64 `gorm:"primary_key;AUTO_INCREMENT"`
 	Street          string `gorm:"not null"`
 	Number          string `gorm:"not null"`
 	ApartmentNumber string
@@ -57,7 +57,7 @@ type Address struct {
 	City            string `gorm:"not null"`
 	Country         string `gorm:"not null"`
 	PostalCode      string
-	Location        *Location `gorm:"embedded;embedded_prefix:loc_"`
+	Location        Location `gorm:"embedded;embedded_prefix:loc_"`
 }
 
 type Location struct {
