@@ -63,6 +63,6 @@ type Address struct {
 }
 
 type Location struct {
-	Latitude  string `gorm:"not null"`
-	Longitude string `gorm:"not null"`
+	Latitude  float32 `gorm:"not null"`
+	Longitude float32 `gorm:"not null"`
 }
