@@ -36,7 +36,8 @@ type Property struct {
 }
 
 type PropertyState struct {
-	PropertyID       uint64
+	ID               uint64 `gorm:"primary_key;AUTO_INCREMENT"`
+	PropertyID       uint64 `gorm:"index"`
 	Overall          int
 	Safety           int
 	Windows          int
@@ -46,6 +47,7 @@ type PropertyState struct {
 	NaturalLight     int
 	Appearence       int
 	WaterPreasure    int
+	CreatedAt        time.Time
 }
 
 type Address struct {
