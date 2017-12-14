@@ -4,6 +4,20 @@ import (
 	"time"
 )
 
+var PropertyTypes = map[string]struct{}{
+	"APARTAMENTO":          {},
+	"CASA":                 {},
+	"PENTHOUSE":            {},
+	"CAMPO":                {},
+	"LOCAL_COMERCIAL":      {},
+	"PROPIEDAD_HORIZONTAL": {},
+	"TERRENO":              {},
+	"GALPON":               {}}
+
+var Orientation = map[string]struct{}{
+	"FRENTE":       {},
+	"CONTRAFRENTE": {}}
+
 type Property struct {
 	ID                 uint64 `gorm:"primary_key;AUTO_INCREMENT"`
 	Description        string
