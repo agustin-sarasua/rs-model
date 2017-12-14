@@ -26,11 +26,13 @@ type Property struct {
 	State              int // Del 0 al 10, 10 seria a estrenar
 	Bedrooms           int `gorm:"not null"`
 	BedroomsSizes      string
-	KitchenSize        string
-	LivingRoomSize     string
+	Kitchens           int
+	KitchenSizes       string
+	LivingroomSize     int
 	CourtyardSize      int
 	Bathrooms          int
 	Size               int `gorm:"not null"`
+	ConstructionSize   int `gorm:"not null"`
 	ConstructionYear   int
 	Padron             string
 	BuildingName       string
@@ -42,7 +44,7 @@ type Property struct {
 	BalconySize        string
 	Showers            int
 	Expenses           int32
-	Amenities          string `gorm:"type:varchar(64)"`
+	Amenities          string `gorm:"type:varchar(1024)"`
 	CreatedAt          time.Time
 	PropertyState      *PropertyState `gorm:"-"`
 	Elevators          int
