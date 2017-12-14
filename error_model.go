@@ -8,9 +8,13 @@ type ErrorResponse struct {
 	Errors JSONErrs
 }
 
-func BuildErrorResponse(errs []error) ErrorResponse {
+func BuildErrorResponse(errs ...error) ErrorResponse {
 	return ErrorResponse{Errors: JSONErrs(errs)}
 }
+
+// func BuildErrorResponse(errs ...error) ErrorResponse {
+// 	return ErrorResponse{Errors: JSONErrs([]error{errs})}
+// }
 
 func (je JSONErrs) MarshalJSON() ([]byte, error) {
 	res := make([]interface{}, len(je))

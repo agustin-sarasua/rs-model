@@ -18,6 +18,9 @@ var Orientation = map[string]struct{}{
 	"FRENTE":       {},
 	"CONTRAFRENTE": {}}
 
+var Amenities = map[string]struct{}{
+	"JACUZZI": {}, "POOL": {}, "BBQ": {}, "GARAGE": {}, "PORTERIA_24": {}, "VIGILANCIA": {}, "GYM": {}}
+
 type Property struct {
 	ID                 uint64 `gorm:"primary_key;AUTO_INCREMENT"`
 	Description        string
