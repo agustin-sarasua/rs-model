@@ -21,12 +21,22 @@ type User struct {
 }
 
 type Account struct {
-	ID       int64 `gorm:"primary_key;AUTO_INCREMENT"`
-	Owner    *User `gorm:"ForeignKey:OwnerID;AssociationForeignKey:ID"`
-	OwnerID  int64
-	Name     string
-	Type     string // CC, CA
-	Number   string
-	BankName string
-	Sucursal string
+	ID        int64 `gorm:"primary_key;AUTO_INCREMENT"`
+	Owner     *User `gorm:"ForeignKey:OwnerID;AssociationForeignKey:ID"`
+	OwnerID   int64
+	Name      string
+	Type      string // CC, CA
+	Number    string
+	BankName  string
+	Sucursal  string
+	CreatedAt time.Time `gorm:"not null"`
+}
+
+type Transaction struct {
+	ID            int64        `gorm:"primary_key;AUTO_INCREMENT"`
+	CreatedAt     time.Time    `gorm:"not null"`
+	Publication   *Publication `gorm:"ForeignKey:PublicationID;AssociationForeignKey:ID"`
+	PublicationID int64
+	Client        *User `gorm:"ForeignKey:ClientID;AssociationForeignKey:ID"`
+	ClientID      int64
 }
