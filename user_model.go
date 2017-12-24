@@ -8,6 +8,11 @@ var AccountTypes = map[string]struct{}{
 	"CAJA_AHORRO":      {},
 	"CUENTA_CORRIENTE": {}}
 
+var Roles = map[string]string{
+	"ADMIN":   "ABM_PROPIEDADES,ABM_PUBLICACIONES,ABM_USUARIOS",
+	"MANAGER": "ABM_PROPIEDADES,ABM_PUBLICACIONES",
+	"PUBLIC":  ""}
+
 type User struct {
 	ID             int64  `gorm:"primary_key;AUTO_INCREMENT"`
 	FirebaseID     string `gorm:"index"`
@@ -18,6 +23,7 @@ type User struct {
 	DocumentNumber string
 	DocumentType   string
 	CreatedAt      time.Time `gorm:"not null"`
+	Roles          string
 }
 
 type Account struct {
@@ -30,13 +36,4 @@ type Account struct {
 	BankName  string
 	Sucursal  string
 	CreatedAt time.Time `gorm:"not null"`
-}
-
-type Transaction struct {
-	ID            int64        `gorm:"primary_key;AUTO_INCREMENT"`
-	CreatedAt     time.Time    `gorm:"not null"`
-	Publication   *Publication `gorm:"ForeignKey:PublicationID;AssociationForeignKey:ID"`
-	PublicationID int64
-	Client        *User `gorm:"ForeignKey:ClientID;AssociationForeignKey:ID"`
-	ClientID      int64
 }
