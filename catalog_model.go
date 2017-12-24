@@ -1,13 +1,15 @@
 package m
 
 type CountryConfig struct {
-	Code   string
-	Cities map[string]CityConfig
+	Code       string
+	Cities     map[string]CityConfig
+	Guarantees []string
 }
 
 type CityConfig struct {
 	Code          string
 	Neigbourhoods []string
+	Guarantees    []string
 }
 
 var (
