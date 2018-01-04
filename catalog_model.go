@@ -7,9 +7,15 @@ type CountryConfig struct {
 }
 
 type CityConfig struct {
+	Name          string
 	Code          string
-	Neigbourhoods []string
-	Guarantees    []string
+	Neigbourhoods []Neigbourhood
+	Guarantees    map[string]string
+}
+
+type Neigbourhood struct {
+	Name string
+	Code string
 }
 
 var (
@@ -18,8 +24,12 @@ var (
 )
 
 var (
-	mvd = CityConfig{Code: "MVD", Neigbourhoods: []string{"AGUADA", "PARQUE_RODO", "POCITOS", "CARRASCO", "POCITOS_NUEVO", "CENTRO", "CIUDAD_VIEJA"}}
-	pde = CityConfig{Code: "PDE", Neigbourhoods: []string{}}
+	mvd = CityConfig{
+		Name: "Montevideo",
+		Code: "MVD",
+		Neigbourhoods: []Neigbourhood{Neigbourhood{Code: "AGUADA", Name: "Aguada"},
+			Neigbourhood{Code: "POCITOS", Name: "Pocitos"}}}
+	pde = CityConfig{Name: "Punta del Este", Code: "PDE", Neigbourhoods: []Neigbourhood{}}
 )
 
 var CountryCitites = map[string]CountryConfig{uy.Code: uy, ar.Code: ar}
