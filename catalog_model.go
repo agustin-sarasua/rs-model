@@ -2,34 +2,34 @@ package m
 
 type CountryConfig struct {
 	Code       string
-	Cities     map[string]CityConfig
+	Cities     []CityConfig
 	Guarantees []string
 }
 
 type CityConfig struct {
 	Name          string
 	Code          string
-	Neigbourhoods []Neigbourhood
+	Neigbourhoods []NameCode
 	Guarantees    map[string]string
 }
 
-type Neigbourhood struct {
+type NameCode struct {
 	Name string
 	Code string
 }
 
 var (
-	uy = CountryConfig{Code: "UY", Cities: map[string]CityConfig{mvd.Code: mvd, pde.Code: pde}}
-	ar = CountryConfig{Code: "AR", Cities: map[string]CityConfig{}}
+	uy = CountryConfig{Code: "UY", Cities: []CityConfig{mvd, pde}}
+	ar = CountryConfig{Code: "AR", Cities: []CityConfig{}}
 )
 
 var (
 	mvd = CityConfig{
 		Name: "Montevideo",
 		Code: "MVD",
-		Neigbourhoods: []Neigbourhood{Neigbourhood{Code: "AGUADA", Name: "Aguada"},
-			Neigbourhood{Code: "POCITOS", Name: "Pocitos"}}}
-	pde = CityConfig{Name: "Punta del Este", Code: "PDE", Neigbourhoods: []Neigbourhood{}}
+		Neigbourhoods: []NameCode{NameCode{Code: "AGUADA", Name: "Aguada"},
+			NameCode{Code: "POCITOS", Name: "Pocitos"}}}
+	pde = CityConfig{Name: "Punta del Este", Code: "PDE", Neigbourhoods: []NameCode{}}
 )
 
 var CountryCitites = map[string]CountryConfig{uy.Code: uy, ar.Code: ar}
