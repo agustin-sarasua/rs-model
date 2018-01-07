@@ -11,11 +11,15 @@ type CityConfig struct {
 	Code           string
 	Neighbourhoods []NameCode
 	Guarantees     map[string]string
+	Lat            float64
+	Lng            float64
 }
 
 type NameCode struct {
 	Name string
 	Code string
+	Lat  float64
+	Lng  float64
 }
 
 var (
@@ -27,8 +31,11 @@ var (
 	mvd = CityConfig{
 		Name: "Montevideo",
 		Code: "MVD",
-		Neighbourhoods: []NameCode{NameCode{Code: "AGUADA", Name: "Aguada"},
-			NameCode{Code: "POCITOS", Name: "Pocitos"}}}
+		Lat:  -34.961772,
+		Lng:  -54.942884,
+		Neighbourhoods: []NameCode{
+			NameCode{Code: "AGUADA", Name: "Aguada", Lat: -34.883501, Lng: -56.190684},
+			NameCode{Code: "POCITOS", Name: "Pocitos", Lat: -34.908530, Lng: -56.150406}}}
 	pde = CityConfig{Name: "Punta del Este", Code: "PDE", Neighbourhoods: []NameCode{}}
 )
 
