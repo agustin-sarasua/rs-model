@@ -4,22 +4,9 @@ import (
 	"time"
 )
 
-var PropertyTypes = map[string]struct{}{
-	"APARTAMENTO":          {},
-	"CASA":                 {},
-	"PENTHOUSE":            {},
-	"CAMPO":                {},
-	"LOCAL_COMERCIAL":      {},
-	"PROPIEDAD_HORIZONTAL": {},
-	"TERRENO":              {},
-	"GALPON":               {}}
-
 var Orientation = map[string]struct{}{
 	"FRENTE":       {},
 	"CONTRAFRENTE": {}}
-
-var Amenities = map[string]struct{}{
-	"JACUZZI": {}, "POOL": {}, "BBQ": {}, "GARAGE": {}, "PORTERIA_24": {}, "VIGILANCIA": {}, "GYM": {}}
 
 type Property struct {
 	ID                 uint64 `gorm:"primary_key;AUTO_INCREMENT"`
@@ -29,6 +16,7 @@ type Property struct {
 	State              int // Del 0 al 10, 10 seria a estrenar
 	Bedrooms           int `gorm:"not null"`
 	BedroomsSizes      string
+	HasKitchenette	   bool
 	Kitchens           int
 	KitchenSizes       string
 	LivingroomSize     int
