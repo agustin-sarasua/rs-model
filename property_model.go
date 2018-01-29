@@ -9,37 +9,39 @@ var Orientation = map[string]struct{}{
 	"CONTRAFRENTE": {}}
 
 type Property struct {
-	ID                 uint64 `gorm:"primary_key;AUTO_INCREMENT"`
-	Description        string
-	Type               string `gorm:"not null"` //Apartamento, Casa, LocalComercial
-	Orientation        string
-	State              int // Del 0 al 10, 10 seria a estrenar
-	Bedrooms           int `gorm:"not null"`
-	BedroomsSizes      string
-	HasKitchenette	   bool
-	Kitchens           int
-	KitchenSizes       string
-	LivingroomSize     int
-	CourtyardSize      int
-	Bathrooms          int
-	Size               int `gorm:"not null"`
-	ConstructionSize   int `gorm:"not null"`
-	ConstructionYear   int
-	Padron             string
-	BuildingName       string
-	Address            *Address `gorm:"ForeignKey:AddressID;AssociationForeignKey:ID"`
-	AddressID          uint
-	ApartmentsPerFloor int
-	Floors             int
-	TerraceSize        string
-	BalconySize        string
-	Showers            int
-	Expenses           int32
-	Amenities          string `gorm:"type:varchar(1024)"`
-	CreatedAt          time.Time
-	PropertyState      *PropertyState `gorm:"-"`
-	Elevators          int
-	GarageSize         int
+	ID               uint64 `gorm:"primary_key;AUTO_INCREMENT"`
+	Title            string `gorm:"not null"`
+	Description      string
+	Type             string `gorm:"not null"` //Apartamento, Casa, LocalComercial
+	Disposition      string
+	Orientation      string
+	State            string
+	Bedrooms         int `gorm:"not null"`
+	Bathrooms        int `gorm:"not null"`
+	Garages          int `gorm:"not null"`
+	Size             int `gorm:"not null"`
+	ConstructionSize int `gorm:"not null"`
+	ConstructionYear int
+	Address          *Address `gorm:"ForeignKey:AddressID;AssociationForeignKey:ID"`
+	AddressID        uint
+	Floors           int
+	TerraceSize      string
+	Expenses         int32
+	CreatedAt        time.Time
+	Amenities        string `gorm:"type:varchar(1024)"`
+	// HasKitchenette bool
+	// Kitchens       int
+	// KitchenSizes   string
+	// LivingroomSize int
+	// CourtyardSize  int
+	// Padron             string
+	// BuildingName       string
+	// ApartmentsPerFloor int
+	// BalconySize        string
+	// Showers            int
+	// PropertyState      *PropertyState `gorm:"-"`
+	// Elevators          int
+	// GarageSize         int
 }
 
 type PropertyState struct {
