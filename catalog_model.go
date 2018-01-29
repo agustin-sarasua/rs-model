@@ -4,13 +4,14 @@ type CountryConfig struct {
 	Code          string
 	Cities        []CityConfig
 	PropertyTypes []NameCode
+	States        []NameCode
+	Guarantees    []NameCode
 }
 
 type CityConfig struct {
 	Name           string
 	Code           string
 	Neighbourhoods []NameCode
-	Guarantees     map[string]string
 	Lat            float64
 	Lng            float64
 }
@@ -24,8 +25,32 @@ type NameCode struct {
 }
 
 var (
-	uy = CountryConfig{Code: "UY", Cities: []CityConfig{mvd, pde}}
-	ar = CountryConfig{Code: "AR", Cities: []CityConfig{}}
+	uy = CountryConfig{Code: "UY",
+		Cities: []CityConfig{mvd, pde},
+		Guarantees: []NameCode{
+			NameCode{Code: "BHU", Name: "BHU"},
+			NameCode{Code: "ANDA", Name: "Anda"},
+			NameCode{Code: "CGN", Name: "CGN"},
+			NameCode{Code: "PROP_MVD", Name: "Propiedad en el Montevideo"},
+			NameCode{Code: "PROP_INTERIOR", Name: "Propiedad en el Interior"},
+			NameCode{Code: "PORTO", Name: "Porto Seguro"},
+			NameCode{Code: "OTRO", Name: "Otro"}},
+		States: []NameCode{
+			NameCode{Code: "RECYCLED", Name: "Reciclada"},
+			NameCode{Code: "TO_RECYCLE", Name: "Para reciclar"},
+			NameCode{Code: "MAINTENANCE_REQUIRED", Name: "Requiere Mantenimiento"},
+			NameCode{Code: "BUEN_ESTADO", Name: "Buen estado"},
+			NameCode{Code: "EXCELENTE_ESTADO", Name: "Excelente estado"},
+			NameCode{Code: "NEW", Name: "A estrenar"}}}
+	ar = CountryConfig{Code: "AR",
+		Cities: []CityConfig{},
+		States: []NameCode{
+			NameCode{Code: "RECYCLED", Name: "Reciclada"},
+			NameCode{Code: "TO_RECYCLE", Name: "Para reciclar"},
+			NameCode{Code: "MAINTENANCE_REQUIRED", Name: "Requiere Mantenimiento"},
+			NameCode{Code: "BUEN_ESTADO", Name: "Buen estado"},
+			NameCode{Code: "EXCELENTE_ESTADO", Name: "Excelente estado"},
+			NameCode{Code: "NEW", Name: "A estrenar"}}}
 )
 
 var (
